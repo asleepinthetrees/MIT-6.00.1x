@@ -1,0 +1,404 @@
+LECTURE 1
+
+Goal	become skillful at getting computers to do what you want
+		it to do.
+
+		Become good at computational thinking
+
+What does a computer do?
+
+	performs calculations
+
+	remembers results
+
+	What calculations?
+
+		Built in primitives
+
+		But we can also create our own methods of computing
+
+How quickly does a modern computer actually run?
+
+	2 operations in the amoutn of time it takes light to 
+	go from a desk lamp to your desk
+
+	By the time a ball drops from you waist to the ground
+	your computer can execute 1 billioin operations
+
+How much can your computer store?
+	
+	An incredible amount.
+
+Are simple calculations enough?
+	
+	searching the world wide web
+		about 45 billion web pages
+		1k words per pages, 10 operations per word
+		takes 5.2 days to find something on the web
+		not fast enough you need to be smart when
+		looking for things
+
+	playing chess
+		about 35 moves at any point in time.
+		1.8 billion options. If you can check each move in
+		100 operations per move, it takes 1/2 hour per move
+		10^123 possible chess games, which is far more
+		than the actual number of atoms in the universe
+
+	To deal with interesting problems you need good algorithm
+	design.
+
+Limitations of a computer?
+	
+	problems that are too complex ex// weather at a local scale
+
+	Cracking encyption schemes
+
+	some problems are impossible to compute
+		for example, predicting whether a piece of code will
+		always halt with an answer for any input
+			Turing's halting problem
+
+Types of Knowledge
+
+What is Computation?
+	
+	What is knowledge?
+
+		Declarative knowledge
+
+			statements of fact
+
+			ex. The square root of anumber x is a number y such
+			that y * y = x
+				can you use this to find a square root?
+					No
+
+		Imperative Knowledge
+
+			"how to" knowledge or recipes for finding something
+
+			ex. how to find a square root for number x
+				start with a guess called g
+				if g * g is close enough to x, stop and say
+				that g is the answer
+				otherwise make a new guess by averaging g and
+				x / g.
+				repeat the process until you get close enough
+
+				Can you use this to find the square root?
+					in most cases, yes.
+
+		Algorithms are Recipes
+
+Basic Machine Architecture
+	
+	How do we capture a recipe in a mechanical process?
+		
+		Build a machine to compute square roots
+			fixed program computers
+				Only does one thing
+
+		Use a Machine that stores and manipulates instructions
+			Stored program computer
+
+	Store Program Computer
+		Sequence of instructions (program) stored inside of
+		a computer
+			Build from predefined set of primitive instructions
+		Special program (interpreter) executes each instruction
+		in order
+
+	Basic Machine Architecture
+		Memory
+		Control Unit
+		Arithmetic Logic Unit (ALU)
+			Input
+			Output
+
+		How it all works
+			You take inputs, put them in the ALU they are fed
+			to the CU which then stores them in memory
+			The ALU follows a series of functions, and sometimes
+			changes the place in memory where the CU is looking.
+			Eventually the ALU gets to a point where it is going
+			to put out an output value, at which point the
+			program stops.
+
+	What are basic primitives
+		Turing showed that using six primitives, anything is
+		computable.
+			Anything that has this property is Turing Complete!
+
+		Modern programming languages have a more convenient set
+		of primitives.
+			Also have ways to abstract methods to create new
+			primitives
+		Anything computable in one language is computable in any
+		other programming language
+
+	Where can things go wrong
+		
+		Creating Recipes
+			Each programming language provides a set of 
+			primitive operations
+
+			each programming language provides mechanisms
+			for combining primitives to form more complex
+			but legal expressions
+
+			Each programming language provides mechanisms for
+			deducing meanings or values associated with 
+			computations or expressions
+
+		Aspects of languages
+			primitive constructs
+				numbers, strings, simple operators
+				equivalent in english is words
+
+			syntax
+				which strings of characters and symbols are
+				well formed or legal
+					specifics will come soon but english
+					equivalent is grammar
+
+			static semantics
+				which syntactically valid strings have a meaning
+
+			formal semantics
+				whats is the meaning associated with a 
+				syntactically correct string of symbols
+				with no static semantic errors
+
+				almost always only one meaning associated
+				with any expression
+
+	Where can things go wrong?
+		syntactic errors
+			common but easily caught by computer
+
+		static semantic errors
+			some languages can check carefully before running
+			a program
+
+			if not caught the behavior of program is 
+			unpredictable
+
+		program doesn't have semantic errors but meaning
+		is not what was intended
+			ex. program crashes, runs forever, produces the
+				wrong answer.
+
+	Our Goal
+		Learn syntax and semantics of a programming language
+
+		learn how to use those elements to create recipes
+		for solving interesting problems
+
+		learn computational thinking, ex. come up with smart
+		ways to solve problems.
+
+LECTURE 2
+
+Programming languages
+	Goal
+		Need a way to describe algorithmic steps such
+		that a computer can use them to execute process
+
+		programming language defines syntax and semantics
+		needed to translate our computational ideas into
+		mechanical steps
+			syntax
+				how do we put together legal expressions
+			semantics
+				how do we deduce the meaning associated with
+				those expressions
+
+	Options for Programming languages
+		Low Level languages
+			use instructions similar to internal control unit
+
+			Source Code --> Checker --> Interpreter --> Output
+
+			checker confirms syntax, static semantics correct
+
+			interpreter just follows the instructions
+
+		High Level Language
+			uses more abstract terms
+
+			Source Code --> Checker --> Compiler --> Object code
+			--> Interpreter --> output
+
+			In a compiled language abstractions are converted
+			into low level instructions then executed
+
+		Interpreted Language
+			Source Code --> checker --> Interprete  --> output
+
+			special program converts source code to internal 
+			data structure then interpreter converts each
+			step into low level machine instructions and
+			executes
+
+			python is an interpreted language
+
+		Trade offs
+			compiled language, code is faster, work is done
+			ahead of time, instructions are all low level
+			when you run. If you have an error, it can be
+			hard to find out at what point in the high level
+			instructions things went wrong
+
+			interpreted language, compilation done on the fly
+			so slightly slower but easier to find where
+			errors occur
+
+Python Programs
+	definitions
+		evaluated
+	commands
+		executed by python interpreter in a shell
+		instruct the interpreter to do something
+
+	objects
+		every program will manipulate data objects
+
+		each object has a type that defines the kinds of
+		things programs can do to it
+
+		Scalar 
+			(cannot be subdivided)
+
+		Non scalar
+			(have internal structures that can be accessed)
+
+	Scalar Objects
+		int - used to represent integers
+		float - used to represent real numbers
+		bool - used to represent Boolean values
+
+		What can i do with these
+			form expressions
+
+	Expressions
+		syntax is <object> <operator> <object>
+
+	Operators on ints and floats
+		i + j = sum
+		i - j = difference
+		i * j = product
+		i / j = if ints result is int, if one is float
+				result is a float
+		i % j = remainder
+		i ** j = power
+
+	Comparison operators on ints and floats
+		>, >=, <=, =, !=
+
+	Operators on bools
+		and, or, not
+
+	Type conversion
+		(float)(<int>) gives a float
+		(int)(<float>) gives an integer
+
+	Variables and Naming
+
+		Simple means of abstractions
+			While we can write arbitrary expressions it would
+			be useful to give names to values of expressions
+			and to be able to reuse those names in place
+			of value
+
+			use assignment
+				x = 3.19   
+					x has been assigned or the value has been 
+					bound to x
+
+			binding variables and values
+				think of it as giving a name to a place in
+				memory. You can retrive the value by using
+				the name which points to memory and get the
+				value for you
+
+	Non scalar objects
+		we will see many types
+
+		simplest type are strings objects of type str
+
+			can be denoted using quotes around a series of 
+			characters
+
+		String operations
+
+			 a = 'a'
+			 3 * a = 'aaa'
+			 3 * 'ab' = 'ababab'
+			 a = str(123)
+			 a + 123 = 'a123'
+
+			 Operator overloading
+			 	using the same operator to do different things
+			 		if you give an operator numbers it will
+			 		do one thing, if you give it characters
+			 		it will perform concatenation.
+
+			 Extracting aprts of strings
+			 	'abc'[0] returns the string 'a'
+			 		counts from 0th element
+			 	'abc'[2] returns the string 'c'
+			 	'abc'[-1] returns string 'c'
+
+			 	Slicing
+			 		if S is a string s[start:end] will output
+			 		a string from start to the index just prior
+			 		to end
+
+Simple Scripts
+	
+	We dont want to type things in every time
+	We want to write a program file
+
+	In order to get output we need to use statments like
+		print()
+
+	We will also need a way to get input from the user
+		raw_input("prompt")
+
+	Comments appear after a #
+
+	A straight line progam executes things in linear order
+
+Branching Programs
+	
+	Simplest branching statement is a conditional
+
+		a test, expression that evaluates to true or false
+			based on test do certain things
+
+		Syntax
+			if(condition):
+				indented block of code
+			else:
+				indented block of code
+			next piece of code
+
+			if(condition):
+				if(nested condition):
+					indented block of code
+				else:
+					indented block of code
+			elif(condition):
+				indented block of code
+			else:
+				indented block of code
+
+	At most each statement will be executed once so these 
+	programs run in constant time
+
+
+
+
+
+
